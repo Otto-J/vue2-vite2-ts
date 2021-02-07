@@ -7,12 +7,18 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import store from "../store";
 @Component
 export default class HelloWorld extends Vue {
+  get state() {
+    return this.$store.state;
+  }
   public msg = "fff";
-  public count = 0;
+  get count() {
+    return this.state.count;
+  }
   public add() {
-    this.count++;
+    store.commit("add");
   }
 }
 </script>
